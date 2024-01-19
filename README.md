@@ -28,19 +28,19 @@ The parent directory of `dyeScreen` must be in `$PYTHONPATH`, enabling
 To add the package to the path, add the following lines to the ~/.bashrc or ~/.bash\_profile file:  
 ```
 {
-  export DYESCREEN=/pathto/dye-screening  
+  export DYESCREEN=/pathto/dyeScreen/parent/dir   
   export PYTHONPATH=$DYESCREEN:$PYTHONPATH
 }
 ```
 
 Create an environment variable with the location of AmberTools executables:  
-`export AMBERPATH="/pathtoAmberTools/bin/"`
+`export AMBERPATH="/pathtoAmberTools"`
 
 ### Contents
 --------
 
 The following is a diagram showing the flow of information in our screening software package.
-![A flow diagram for the code](docs/code_diagram.pdf)
+![A flow diagram for the code](/docs/code_diagram.png)
 
 - README.md
 - commons/  

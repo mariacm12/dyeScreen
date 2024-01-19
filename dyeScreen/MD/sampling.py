@@ -607,7 +607,7 @@ def gen_leap_nolinker(path_samples, amber_path, dye_attach, dna_attach,
     for i, line in enumerate(lines):
 
         # 1) Clean the pdb samples
-        subprocess.run(f"{amber_path}pdb4amber -i {path_samples}/dimer_{i}.pdb -o {path_samples}/dimer_{i}_clean.pdb".split(' '))
+        subprocess.run(f"{amber_path}/bin/pdb4amber -i {path_samples}/dimer_{i}.pdb -o {path_samples}/dimer_{i}_clean.pdb".split(' '))
 
         pdb_name = f'{path_samples}/dimer_{i}_clean.pdb'
         # Amber thinks that the residue after (or before) the dye is terminal, so have to delete the "TER" 
@@ -657,7 +657,7 @@ def gen_leap_nolinker(path_samples, amber_path, dye_attach, dna_attach,
                 print("Error: %s file not found" % myfile)
 
         # 4) Running tleap
-        subprocess.Popen(f"{amber_path}tleap -f {tleap_file} > {path_samples}/leap{i}.log", shell=True)
+        subprocess.Popen(f"{amber_path}/bin/tleap -f {tleap_file} > {path_samples}/leap{i}.log", shell=True)
 
     print("** Last file ", i, " was completed")
     return

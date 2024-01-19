@@ -71,10 +71,10 @@ def import_trajs(traj_file, param=None, dye_res='DYE', dt=1, dt_write=10, num_so
     
     for fi, ts in enumerate(u.trajectory[istep:traj_len+1:dt]):   
         molA, molB = cp.pdb_cap(u, [dyes[0]], [dyes[-1]], resnames=[dye_res[:-1]+'A', dye_res[:-1]+'B'], 
-                                del_list=del_list, path_save=save_path+'dimer.pdb', MDA_selection='all', mol_name=dye_res)
+                                del_list=del_list, path_save=save_path+'/dimer.pdb', MDA_selection='all', mol_name=dye_res)
         t_i = round((ts.frame*dt_write),2)
 
-        save_file = f"{save_path}{dye_file[0]}_{dye_file[1]}_{mode}"
+        save_file = f"{save_path}/{dye_file[0]}_{dye_file[1]}_{mode}"
         # Verify vector atoms are given
         if len(vec_ats) == 0 and mode in ["angle", "disp_short", "disp_long"]:
             raise ValueError("If 'angle' or 'disp' mode is chosen, you need to provide the atoms defining the vectors")
@@ -84,7 +84,7 @@ def import_trajs(traj_file, param=None, dye_res='DYE', dt=1, dt_write=10, num_so
             save_file += f"{vec_ats[0]}-{vec_ats[1]}"
         elif mode == "cofm":
             # Universe must be redefined as molA/B doesn't contain weight information
-            umol = MDAnalysis.Universe(save_path+'dimer.pdb', format='PDB')
+            umol = MDAnalysis.Universe(save_path+'/dimer.pdb', format='PDB')
             cofm = gu.com_distance(umol, umol, '1', '2')
             res_data.append([t_i, cofm])
         elif "disp" in mode:
@@ -375,7 +375,7 @@ def get_sample_pdb(df, sample_idx, traj_path, path_save, dt, cluster, dye_res='D
     dyes = u.select_atoms("resname " + dye_res).atoms.resids
 
     del_list = [[0,["P","OP1","OP2"],["O3'","O5'"]]]
-    file_save = f"sample_{dimer_idx}_c{cluster}.pdb"
+    file_save = f"/sample_{dimer_idx}_c{cluster}.pdb"
     resnums = [dyes[0]], [dyes[-1]]
     mol = gu.get_pdb(traj[:-3], param, path_save+file_save, resnums, select=(None, time_idx),
                     dt=dt, MDA_selection='all', del_list=del_list,
@@ -451,7 +451,7 @@ def extract_qchem(isample, file, path_save, rab, slurm_prefix="", max_time=10):
         th in Hartree
         te in Hartree
     """
-    f = open(path_save + "run_qchem.sh", "w")
+    f = open(path_save + "/run_qchem.sh", "w")
     f.write(slurm_prefix)
     f.write(f"module load qchem\npath={file[:-3]}\n")
     f.write("# Fragment-based calculation\n")
@@ -478,7 +478,7 @@ def extract_qchem(isample, file, path_save, rab, slurm_prefix="", max_time=10):
         max_wait_time = max_time*60  # Maximum wait time in seconds
         wait_interval = int(max_wait_time/10)  # Time between checks in seconds
 
-        file_path = f"{path_save}tintegrals_{isample}.dat"
+        file_path = f"{path_save}/tintegrals_{isample}.dat"
 
         waited_time = 0
         while not os.path.exists(file_path) and waited_time < max_wait_time:
@@ -542,7 +542,7 @@ def QM_along_traj(u, dye_name, save_path, dt=0.02, dt_write=10, istep=1, tin=0, 
 
         # Replacing with opt molecules (saving pdb to check) 
         mol1, mol2 = cp.pdb_cap(u,resnums[0], resnums[1], resnames=[dye_name[:2]+'A', dye_name[:2]+'B'],
-                                del_list=del_list, path_save=save_path+'dimerCap.pdb', MDA_selection='all',
+                                del_list=del_list, path_save=save_path+'/dimerCap.pdb', MDA_selection='all',
                                 cap_list=[cap_pos,cap_pos], mol_name=dye_name)
 
 

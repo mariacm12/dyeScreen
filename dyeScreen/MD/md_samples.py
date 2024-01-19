@@ -510,7 +510,7 @@ def md_run(sample, path, amber_path, sample_frefix='dimer_', pdb=None, param=Non
         tasks (int, optional): Number of tasks for HPC run. Defaults to 1.
         logfile (str, optional): Custom name of log file for HPC run. Defaults to "out.log".
         sander_path(str,optional): The path to sander executable. 
-                                   Defaults to the executable in <amber_path>/bin if not provided.
+                                   Defaults to the executable in <amber_path>/bin/sander if not provided.
         slurm_prefix (str, optional): Custom prefix for SLURM file. Defaults to None for auto generated file.
     """
 
@@ -573,7 +573,7 @@ def eq_check(sample, path, amber_path, sample_frefix='dimer_', pdb=None, trajs=N
         tasks (int, optional): Number of tasks for HPC run. Defaults to 1.
         logfile (str, optional): Custom name of log file for HPC run. Defaults to "out.log".
         sander_path(str,optional): The path to sander executable. 
-                                   Defaults to the executable in <amber_path>/bin if not provided.
+                                   Defaults to the executable in <amber_path>/bin/sander if not provided.
         slurm_prefix (str, optional): Custom prefix for SLURM file. Defaults to None for auto generated file.
 
 
