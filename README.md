@@ -2,7 +2,7 @@ dyeScreen
 ==============================
 [//]: # (Badges)
 [![GitHub Actions Build Status](https://github.com/mariacm12/dyeScreen/workflows/CI/badge.svg)](https://github.com/REPLACE_WITH_OWNER_ACCOUNT/dyeScreen/actions?query=workflow%3ACI)
-[![codecov](https://codecov.io/gh/mariacm12/dyeScreen/branch/main/graph/badge.svg)](https://codecov.io/gh/REPLACE_WITH_OWNER_ACCOUNT/dyeScreen/branch/main)
+[![codecov](https://codecov.io/gh/mariacm12/dyeScreen/branch/main/graph/badge.svg)](https://codecov.io/gh/mariacm12/dyeScreen/branch/main)
 
 
 A code for the High-Throughput Screening of Molecules in DNA Scaffolding and studying the Electronic Structure properties of chromophores in dissordered systems. Provides functions for studying the molecules based on Molecular Dynamics (MD) simulations and quantum mehanical calculations (QM).
