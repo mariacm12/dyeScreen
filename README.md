@@ -40,7 +40,8 @@ Create an environment variable with the location of AmberTools executables:
 --------
 
 The following is a diagram showing the flow of information in our screening software package.
-![A flow diagram for the code](/docs/code_diagram.png)
+<img src="/docs/code_diagram.png" alt="flow-diagram" width="700"/>
+
 
 - README.md
 - commons/  
@@ -57,7 +58,8 @@ The following is a diagram showing the flow of information in our screening soft
     - `MD/md_samples.py`: Takes the output from sampling to initialize the MD simulations.
 - QM/  
     - `QM/cluster_trajs.py`
-    This module contains function for importing MD trajectories (as parameter prmtop and trajectory nc files) and statistical analysis of the data.  
+    This module contains function for importing MD trajectories (as parameter prmtop and trajectory nc files) and statistical analysis of the data.
+- examples/
     
 ### To-do
 -----
